@@ -1,8 +1,3 @@
-body {
-    text-align: center;
-    color: darkblue;
-}
-
 .phoneBookContainer {
     background: url(../img/original.jpg);
     background-repeat: no-repeat;
@@ -31,10 +26,9 @@ body {
     opacity: 50%;
 }
 
-h1, h2 {
-    font-size: 24px;
-    margin: 0;
-    padding-left: 70px;
-    padding-bottom: 10px;
-    text-align: left;
+.homeViewContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
 }

@@ -1,0 +1,26 @@
+.appBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    border-bottom: 1px solid darkblue;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    display: flex;
+    margin-left: 20px;
+}
+
+.navigationLinkActive {
+    color:blue;
+}
+
+.authNav {
+    margin-right: 20px;
+}
+
+.authNavLink:hover,
+.authNavLink:focus {
+    color:blue;
+}

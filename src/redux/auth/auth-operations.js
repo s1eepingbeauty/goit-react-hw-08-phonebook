@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+  getCurrentUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
   logInError,
   logInRequest,
   logInSuccess,
@@ -23,7 +26,7 @@ export const token = {
 };
 
 /*
- * POST @ /user/signup
+ * POST @ /users/signup
  * body { name, email, password }
  *
  * После успешной регистрации добавляем token в HTTP-заголовок
@@ -40,7 +43,7 @@ export const register = credentials => dispatch => {
 };
 
 /*
- * POST @ /user/login
+ * POST @ /users/login
  * body { email, password }
  *
  * После успешного logIn добавляем token в HTTP-заголовок
@@ -57,7 +60,7 @@ export const logIn = credentials => dispatch => {
 };
 
 /*
- * POST @ /user/logout
+ * POST @ /users/logout
  * headers:
  *    Authorization: Bearer token
  *
@@ -75,7 +78,7 @@ export const logOut = () => dispatch => {
 };
 
 /*
- * GET @ /user/current
+ * GET @ /users/current
  * headers:
  *    Authorization: Bearer token
  *
@@ -83,4 +86,18 @@ export const logOut = () => dispatch => {
  * 2. Если token нет - выходим, не выполняя никаких операций
  * 3. Если token есть - добавляем его в HTTP-заголовок и выполняем операцию
  */
-export const getCurrentUser = () => (dispatch, getSate) => {};
+export const getCurrentUser = () => (dispatch, getSate) => {
+  const {
+    auth: { token: persistedToken },
+  } = getSate();
+
+  if (!persistedToken) return;
+
+  token.set(persistedToken);
+  dispatch(getCurrentUserRequest());
+
+  axios
+    .get('/users/current')
+    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
+    .catch(error => dispatch(getCurrentUserError(error.message)));
+};
