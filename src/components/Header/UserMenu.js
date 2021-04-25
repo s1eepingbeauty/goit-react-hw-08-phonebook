@@ -10,7 +10,7 @@ const UserMenu = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className={styles.userMenu}>
       <img src={avatar} alt="user avatar" width="30" />
       <span>Welcome, {name}!</span>
       <button type="button" onClick={() => dispatch(logOut())}>

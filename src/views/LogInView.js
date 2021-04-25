@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../redux/auth/auth-operations';
+import styles from './styles.module.css';
 
 const INITIAL_STATE = {
   email: '',
@@ -40,10 +41,10 @@ const LogInView = () => {
   };
 
   //   const validateForm = () => {
-  //         if (!email || !password) {
-  //             alert('Some field is empty');
-  //             return false;
-  //         }
+  //      if (!email || !password) {
+  //         alert('Some field is empty');
+  //         return false;
+  //      }
   //   };
 
   const resetForm = () => {
@@ -53,8 +54,8 @@ const LogInView = () => {
 
   return (
     <div>
-      <h1>LogIn page</h1>
-      <form onSubmit={handleSubmitForm} autoComplete="off">
+      {/* <h1>LogIn page</h1> */}
+      <form className={styles.logInForm} onSubmit={handleSubmitForm} autoComplete="off">
         <label>
           Email
           <input

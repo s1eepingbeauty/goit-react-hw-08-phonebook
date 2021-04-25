@@ -1,19 +1,19 @@
-.appBar{
-    display: flex;
-    align-items: center;
+.appBar {
+    display        : flex;
+    align-items    : center;
     justify-content: space-between;
-    height: 40px;
-    border-bottom: 1px solid darkblue;
-    margin-bottom: 20px;
+    height         : 40px;
+    border-bottom  : 1px solid darkblue;
+    margin-bottom  : 20px;
 }
 
 .navigation {
-    display: flex;
+    display    : flex;
     margin-left: 20px;
 }
 
 .navigationLinkActive {
-    color:blue;
+    color: blue;
 }
 
 .authNav {
@@ -22,5 +22,14 @@
 
 .authNavLink:hover,
 .authNavLink:focus {
-    color:blue;
+    color: blue;
+}
+
+.userMenu {
+    display    : flex;
+    align-items: baseline;
+}
+
+.userMenu img {
+    margin-right: 5px;
 }

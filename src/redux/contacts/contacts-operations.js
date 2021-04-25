@@ -1,3 +1,4 @@
+//import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import {
   addContactRequest,
@@ -19,6 +20,12 @@ export const fetchContacts = () => dispatch => {
     .then(({ data }) => dispatch(fetchContactsSuccess(data)))
     .catch(error => dispatch(fetchContactsError(error.message)));
 };
+
+// - автоматически создаются actions: pending(request), fulfilled(success), rejected(error)
+// export const fetchContactsAsync = createAsyncThunk('contacts/fetchContacts', async () => {
+//   const {data} = await axios.get('/contacts');
+//   return data;
+// });
 
 //POST @ /contacts
 export const addContact = newContact => dispatch => {

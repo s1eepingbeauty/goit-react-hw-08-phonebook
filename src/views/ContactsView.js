@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux';
+import { isLoading } from '../redux/contacts/contacts-selectors';
 import ContactForm from '../components/ContactForm';
 import ContactList from '../components/ContactList';
 import Filter from '../components/Filter';
 import Loader from 'react-loader-spinner';
-import { useSelector } from 'react-redux';
-import { isLoading } from '../redux/contacts/contacts-selectors';
 import styles from './styles.module.css';
 
 const ContactsView = () => {

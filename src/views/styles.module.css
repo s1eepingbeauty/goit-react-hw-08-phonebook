@@ -1,12 +1,12 @@
 .phoneBookContainer {
-    background: url(../img/original.jpg);
+    background       : url(../img/original.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 600px;
-    height: 460px;
-    padding: 25px;
-    display: flex;
-    flex-wrap: wrap;
+    background-size  : contain;
+    width            : 600px;
+    height           : 460px;
+    padding          : 25px;
+    display          : flex;
+    flex-wrap        : wrap;
 }
 
 .phoneBook,
@@ -15,20 +15,48 @@
 }
 
 .contacts {
-    height: 430px;
+    height  : 430px;
     overflow: auto;
 }
 
 .spinner {
     position: fixed;
-    top:210px;
-    left:290px;
-    opacity: 50%;
+    top     : 210px;
+    left    : 290px;
+    opacity : 50%;
 }
 
 .homeViewContainer {
-    display: flex;
-    align-items: center;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
-    height: 70vh;
+    height         : 70vh;
+}
+
+.registrationForm {
+    padding       : 20px;
+    width         : 250px;
+    border        : 1px solid darkblue;
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-end;
+}
+
+.registrationForm input {
+    margin-left  : 10px;
+    margin-bottom: 10px;
+}
+
+.logInForm {
+    padding       : 20px;
+    width         : 250px;
+    border        : 1px solid darkblue;
+    display       : flex;
+    flex-direction: column;
+    align-items   : flex-end;
+}
+
+.logInForm input {
+    margin-left  : 10px;
+    margin-bottom: 10px;
 }

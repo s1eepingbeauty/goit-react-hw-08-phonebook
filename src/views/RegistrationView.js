@@ -48,19 +48,12 @@ const RegistrationView = () => {
     resetForm();
   };
 
-  // const onCheckUnique = email => {
-  //     const isExistUser = !!users.find(user => user.email === email);
-  //     isExistUser && alert(`User with ${email} is already registered!`);
-  //     return !isExistUser;
+  // const validateForm = () => {
+  //   if (!name || !email || !password) {
+  //     alert('Some field is empty');
+  //     return false;
+  //   }
   // };
-
-  const validateForm = () => {
-    if (!name || !email || !password) {
-      alert('Some field is empty');
-      return false;
-    }
-    //return onCheckUnique(email);
-  };
 
   const resetForm = () => {
     setName(INITIAL_STATE.name);
@@ -71,7 +64,11 @@ const RegistrationView = () => {
   return (
     <div>
       {/* <h1>Registration page</h1> */}
-      <form className={styles.registrationForm} onSubmit={handleSubmitForm} autoComplete="off">
+      <form
+        className={styles.registrationForm}
+        onSubmit={handleSubmitForm}
+        autoComplete="off"
+      >
         <label>
           Name
           <input

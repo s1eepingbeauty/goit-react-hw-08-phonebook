@@ -1,31 +1,50 @@
-import { Switch, Route } from 'react-router-dom';
+import { useEffect, Suspense, lazy } from 'react';
+import { Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useEffect} from 'react';
-import AppBar from './components/Header/AppBar';
-import HomeView from './views/HomeView';
-import RegistrationView from './views/RegistrationView';
-import LogInView from './views/LogInView';
-import ContactsView from './views/ContactsView';
 import { getCurrentUser } from './redux/auth/auth-operations';
+import AppBar from './components/Header/AppBar';
+import PrivateRoute from './components/Routes/PrivateRoute';
+import PublicRoute from './components/Routes/PublicRoute';
+
+const HomeView = lazy(() => import('./views/HomeView'));
+const LogInView = lazy(() => import('./views/LogInView'));
+const RegistrationView = lazy(() => import('./views/RegistrationView'));
+const ContactsView = lazy(() => import('./views/ContactsView'));
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrentUser());
-  })
+  });
 
   return (
-    <div>
+    <>
       <AppBar />
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/register" component={RegistrationView} />
-        <Route path="/login" component={LogInView} />
-        <Route path="/contacts" component={ContactsView} />
-      </Switch>
-    </div>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Switch>
+          <PublicRoute exact path="/" component={HomeView} />
+          <PublicRoute
+            path="/register"
+            redirectTo="/contacts"
+            restricted
+            component={RegistrationView}
+          />
+          <PublicRoute
+            path="/login"
+            redirectTo="/contacts"
+            restricted
+            component={LogInView}
+          />
+          <PrivateRoute
+            path="/contacts"
+            redirectTo="/login"
+            component={ContactsView}
+          />
+        </Switch>
+      </Suspense>
+    </>
   );
-}
+};
 
 export default App;

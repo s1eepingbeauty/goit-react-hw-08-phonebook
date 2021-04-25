@@ -4,6 +4,7 @@ import { getContacts } from '../../redux/contacts/contacts-selectors';
 import {
   addContact,
   fetchContacts,
+  //fetchContactsAsync,
 } from '../../redux/contacts/contacts-operations';
 import styles from './styles.module.css';
 
@@ -19,6 +20,7 @@ const ContactForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    //dispatch(fetchContactsAsync());
     dispatch(fetchContacts());
   }, [dispatch]);
 

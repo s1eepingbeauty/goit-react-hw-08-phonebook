@@ -12,8 +12,12 @@ import {
   fetchContactsSuccess,
   fetchContactsError,
 } from './contacts-actions';
+//import { fetchContactsAsync } from './contacts-operations';
 
 const loading = createReducer(false, {
+  // [fetchContactsAsync.pending]: () => true,
+  // [fetchContactsAsync.fulfilled]: () => false,
+  // [fetchContactsAsync.rejected]: () => false,
   [fetchContactsRequest]: () => true,
   [fetchContactsSuccess]: () => false,
   [fetchContactsError]: () => false,
@@ -26,6 +30,7 @@ const loading = createReducer(false, {
 });
 
 const items = createReducer([], {
+   //[fetchContactsAsync.fulfilled]: (_, { payload }) => payload,
   [fetchContactsSuccess]: (_, { payload }) => payload,
   [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
